@@ -39,3 +39,10 @@
 
 # debug information files
 *.dwo
+
+*.csv
+*.onnx
+*.pkl
+__pycache__/
+*.pyc
+
