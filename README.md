@@ -1,154 +1,47 @@
 # 🛡️ AIGRIS
 **Artificial Intelligence for Real-Time Information Security**
 
-
-
-![Status](https://img.shields.io/badge/status-in%20development-orange)
-
-
-
-
-![Platform](https://img.shields.io/badge/platform-Windows-blue)
-
-
-
-
-![License](https://img.shields.io/badge/license-MIT-green)
-
-
-
-> A lightweight, local cybersecurity agent designed to protect
-> everyday users — without ever sending data to the cloud.
+Aigris is an ambitious, privacy-first security agent designed to protect everyday users from common digital threats using on-device Artificial Intelligence. Developed as a university project, Aigris aims to prove that high-level security doesn't have to come at the cost of personal privacy.
 
 ---
 
-## 💡 The Idea
+## 👁️ The Vision
+In a world where security apps often collect as much data as they protect, **Aigris** takes a different path. 
 
-Most security software reacts *after* a threat has already connected
-to your device. AIGRIS intercepts threats **before** — analyzing DNS
-traffic locally with a Machine Learning model, blocking phishing domains
-and malware before the browser loads even a single byte.
+- **Phase 1 (Current):** Protecting regular users from daily threats (Phishing, Malware, Identity Theft).
 
-Everything runs on your device. No logs ever leave your machine.
-No cloud subscription required.
+## ✨ Key Features (Phase 1)
+- **Proactive Phishing Detection:** Real-time analysis of SMS, emails, and suspicious URLs.
+- **Malware Defense:** Identification of common Trojans, Ransomware, and Spyware.
+- **Web Safety:** Monitoring for drive-by downloads and malicious browser extensions.
+- **Network Security:** Detection of "Evil Twin" Wi-Fi attacks and suspicious access attempts.
+- **Real-time Alerts:** Clear, non-technical notifications to keep users informed without overwhelming them.
 
----
+## 🛠️ Technical Constraints & Architecture
+Aigris is built with a focus on efficiency and total privacy:
 
-## 🛡️ What AIGRIS Protects You From
+- **100% On-Device:** No cloud processing. All AI inference happens locally to ensure zero data leakage.
+- **Consumer Hardware Ready:** Optimized to run on standard mobile devices, not dedicated servers.
+- **Resource Efficient:** 
+  - **RAM:** 100-200MB maximum footprint.
+  - **CPU:** <5% usage during idle/background monitoring.
+- **Modular Design:** A plug-and-play architecture that allows for future scaling and the addition of new security modules.
 
-| Threat | Description |
-|---|---|
-| Phishing | Fake websites and emails impersonating banks or services |
-| Malware domains | Connections to trojan, ransomware and spyware distribution sites |
-| Drive-by downloads | Malicious files that install automatically just by visiting a page |
-| Malicious browser extensions | Extensions that spy on browsing or steal credentials |
-| Suspicious login attempts | Repeated or unusual access attempts to your system |
-| Banking fraud | Sites impersonating financial institutions to steal payment data |
-| Rogue Wi-Fi (Evil Twin) | Fake hotspots mimicking trusted networks to intercept traffic |
-| Social engineering | Manipulative patterns in messages or web content |
+## 🧠 Technology Stack
+- **Language:** Kotlin / Android SDK
+- **AI Engine:** ONNX Runtime (optimized for mobile inference)
+- **Local Monitoring:** Android VpnService / Accessibility Services (where applicable)
 
-> Phase 1 targets home users against the most common real-world threats.
-> Advanced enterprise threats are scoped for Phase 3.
+## 🚧 Project Status
+**Note:** This is a **work-in-progress university project**. 
+I am a CS student building this one line of code at a time. It is currently in the early development phase. My goal is to bridge the gap between complex cybersecurity and everyday usability.
 
----
-
-## 🎯 Who It's For
-
-- Home users who want simple, automatic protection
-- Non-technical people: natural language alerts, zero configuration
-- No cybersecurity knowledge required
+## 🤝 Contributing
+Since this is a project born out of passion and learning, contributions, suggestions, and feedback are more than welcome. If you are interested in on-device AI or mobile security, feel free to open an issue or reach out.
 
 ---
 
-## 🏗️ Architecture
-┌─────────────────────────────────────┐
-│           UI (Python/Qt)            │  ← Plain-language alerts
-│  "I blocked a site impersonating    │
-│   your bank"                        │
-└──────────────┬──────────────────────┘
-│ Local socket
-┌──────────────▼──────────────────────┐
-│         Core Engine (C++)           │  ← Main orchestrator
-│   ┌──────────────────────────────┐  │
-│   │       ONNX Runtime           │  │  ← Local AI, zero cloud
-│   └──────────────────────────────┘  │
-│   ┌──────────┐  ┌───────────────┐   │
-│   │DNS Proxy │  │   Sensors     │   │  ← Sleep until needed
-│   └──────────┘  └───────────────┘   │
-└─────────────────────────────────────┘
-**Performance targets:** RAM < 200MB · CPU < 5% idle · Standard consumer hardware
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology |
-|---|---|
-| Core Engine | C++17 |
-| AI Inference | ONNX Runtime |
-| Model Training | Python / scikit-learn |
-| UI | Python / PyQt6 |
-| IPC | Local sockets |
-
----
-
-## 🔬 Roadmap
-
-**Foundation**
-- [x] Architecture design
-- [ ] Local DNS Proxy (C++)
-- [ ] Domain classification model (Python → ONNX)
-- [ ] Local inference with ONNX Runtime
-- [ ] UI — plain-language notifications
-
-**Threat Coverage — Phase 1**
-- [ ] Phishing detection (DNS + URL analysis)
-- [ ] Malware domain blocking
-- [ ] Drive-by download prevention
-- [ ] Malicious browser extension detection
-- [ ] Suspicious login attempt monitoring
-- [ ] Banking fraud site detection
-- [ ] Rogue Wi-Fi / Evil Twin detection
-- [ ] Basic social engineering pattern recognition
-
-**Expansion**
-- [ ] Android port (Phase 2)
-- [ ] Enterprise multi-device management (Phase 3)
-- [ ] Linux server support (Phase 3)
-
----
-
-## 📁 Structure
-/core       → central logic and orchestration
-/brain      → AI models (.onnx) and training scripts
-/sensors    → monitoring modules (DNS, network, system)
-/ui         → graphical interface
-/docs       → technical specs and architecture diagrams
----
-
-## 🔒 Design Principles
-
-**Privacy by design** — no data ever leaves the device  
-**Set and forget** — automatic protection, zero configuration  
-**Minimal footprint** — engineered to run unnoticed in the background  
-**Modular** — built to scale from desktop to mobile to enterprise
-
----
-
-## ⚠️ Disclaimer
-
-Experimental project built for learning and research purposes.  
-Not yet ready for production use.  
-Installation instructions will be available with the first release.
-
----
-
-## 👤 Author
-
-Personal project by a first-year Computer Engineering student,
-built with the goal of learning by creating something real.
-
----
+*“Security shouldn't be a luxury, and privacy shouldn't be a trade-off.”*
 
 ## 📄 License
 
