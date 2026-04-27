@@ -40,9 +40,13 @@
 # debug information files
 *.dwo
 
+# dataset
 *.csv
+
+# onnx models
 *.onnx
 *.pkl
 __pycache__/
 *.pyc
+
 
